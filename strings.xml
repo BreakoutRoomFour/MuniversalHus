@@ -1,5 +1,14 @@
 <resources>
-    <string name="app_name">Muniversal Hu\'s</string>
-    <string name="upgrade1">Muniversal Hu\'s</string>
-    <string name="upgrade2">Muniversal Two\'s</string>
+    <string name="app_name">MUniversal HU\'s</string>
+    <string name="upgrade1">Upgrade 1</string>
+    <string name="upgrade2">Upgrade 2</string>
+    <string name="pointToast">Okay Mu!</string>
+    <string name="question_mu1">Who is Mu?</string>
+    <string name="question_mu2">Where does Mu currently attend school?</string>
+    <string name="question_mu3">Who of the following is Mu\'s love interest?</string>
+    <string name="question_mu4">What is Mu\'s favorite game?</string>
+    <string name="question_mu5">What is the relationship between Mu and Giri?</string>
+    <string name="questionnaire">Mu Questions!</string>
+    <string name="wrong_toast">Cap!</string>
+    <string name="correct_toast">Big brain!</string>
 </resources>
