@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="54dp"
-            android:text="Mu Count: 420"/>
+            android:text="Mu Count: 0"/>
 
         <!--Mu face button-->
         <ImageButton
@@ -24,7 +24,7 @@
             android:layout_width="222dp"
             android:layout_height="300dp"
             android:layout_gravity="center"
-            android:src="@drawable/whitemutton" />
+            android:src="@drawable/mutton" />
 
         <LinearLayout
             android:layout_height="wrap_content"
@@ -45,6 +45,12 @@
                 android:text="@string/upgrade2" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/questionnaire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/questionnaire" />
 
     </LinearLayout>
 
