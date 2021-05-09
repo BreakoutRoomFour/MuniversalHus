@@ -1,0 +1,29 @@
+package com.example.finalapp;
+
+public class Question {
+
+    private int mTextResID;
+    private String mAnswerTrue;
+
+    public int getTextResID() {
+        return mTextResID;
+    }
+    public void setTextResID(int textResID) {
+        mTextResID = textResID;
+    }
+
+    public String isAnswerTrue() {
+        return mAnswerTrue;
+    }
+
+    public void setAnswerTrue(String answerTrue) {
+        mAnswerTrue.equals(answerTrue);
+    }
+
+    public Question(int textResID, String answerTrue)
+    {
+        mTextResID = textResID;
+        mAnswerTrue = answerTrue;
+    }
+
+}
