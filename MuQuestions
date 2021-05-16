@@ -1,68 +1,130 @@
 package com.example.finalapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MuQuestions extends AppCompatActivity {
 
-    private static final String EXTRA_ANSWER_IS_TRUE = "com.example.geoquiz.answer_is_true";
-    private static final String EXTRA_ANSWER_SHOWN = "com.example.geoquiz.answer_shown";
+    private Button mOptionA;
+    private Button mOptionB;
+    private Button mOptionC;
+    private Button mOptionD;
+    private Button mNextButton;
+    private TextView mQuestionTextView;
 
-    private boolean mAnswerIsTrue;
+    private Question[] mQuestionBank = new Question[]{
+            new Question(R.string.question_mu1, "D"),
+            new Question(R.string.question_mu2, "C"),
+            new Question(R.string.question_mu3, "A"),
+            new Question(R.string.question_mu4, "B"),
+            new Question(R.string.question_mu5, "D"),
+            new Question(R.string.question_mu6, "C"),
+            new Question(R.string.question_mu7, "B"),
+    };
 
-    private TextView mAnswerTextView;
-    private Button mShowAnswerButton;
+    private int[] mOptionABank = new int[]{
+            R.string.question_mu1_optionA,
+            R.string.question_mu2_optionA,
+            R.string.question_mu3_optionA,
+            R.string.question_mu4_optionA,
+            R.string.question_mu5_optionA,
+            R.string.question_mu6_optionA,
+            R.string.question_mu7_optionA,
+    };
 
-    /* public static Intent newIntent(Context packageContext, boolean answerIsTrue)
-    {
-        Intent intent = new Intent(packageContext, CheatActivity.class);
-        intent.putExtra(EXTRA_ANSWER_IS_TRUE, answerIsTrue);
-        return intent;
-    }
+    private int[] mOptionBBank = new int[]{
+            R.string.question_mu1_optionB,
+            R.string.question_mu2_optionB,
+            R.string.question_mu3_optionB,
+            R.string.question_mu4_optionB,
+            R.string.question_mu5_optionB,
+            R.string.question_mu6_optionB,
+            R.string.question_mu7_optionB,
+    };
 
-    public static boolean wasAnswerShown(Intent result)
-    {
-        return result.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
-    }
+    private int[] mOptionCBank = new int[]{
+            R.string.question_mu1_optionC,
+            R.string.question_mu2_optionC,
+            R.string.question_mu3_optionC,
+            R.string.question_mu4_optionC,
+            R.string.question_mu5_optionC,
+            R.string.question_mu6_optionC,
+            R.string.question_mu7_optionC,
+    };
+
+    private int[] mOptionDBank = new int[]{
+            R.string.question_mu1_optionD,
+            R.string.question_mu2_optionD,
+            R.string.question_mu3_optionD,
+            R.string.question_mu4_optionD,
+            R.string.question_mu5_optionD,
+            R.string.question_mu6_optionD,
+            R.string.question_mu7_optionD,
+    };
+
+    private int mCurrentIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cheat);
+        setContentView(R.layout.beans);
 
-        mAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
+        mQuestionTextView = findViewById(R.id.question_text_view);
 
-        mAnswerTextView = (TextView) findViewById(R.id.answer_text_view);
+        mOptionA = findViewById(R.id.option_a);
+        mOptionA.setOnClickListener(v -> checkAnswer("A"));
 
-        mShowAnswerButton = (Button) findViewById(R.id.show_answer_button);
-        mShowAnswerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mAnswerIsTrue)
-                {
-                    mAnswerTextView.setText(R.string.true_button);
-                }
+        mOptionB = findViewById(R.id.option_b);
+        mOptionB.setOnClickListener(v -> checkAnswer("B"));
 
-                else
-                {
-                    mAnswerTextView.setText(R.string.false_button);
-                }
+        mOptionC = findViewById(R.id.option_c);
+        mOptionC.setOnClickListener(v -> checkAnswer("C"));
 
-                setAnswerShownResult(true);
+        mOptionD = findViewById(R.id.option_d);
+        mOptionD.setOnClickListener(v -> checkAnswer("D"));
+
+        mNextButton = findViewById(R.id.next_button);
+        mNextButton.setOnClickListener(v -> {
+            mCurrentIndex++;
+            if(mCurrentIndex > 6)
+            {
+                mCurrentIndex = 0;
             }
+            updateScreen();
         });
+
+        updateScreen();
     }
 
-    private void setAnswerShownResult(boolean isAnswerShown)
+    private void updateScreen()
     {
-        Intent data = new Intent();
-        data.putExtra(EXTRA_ANSWER_IS_TRUE, isAnswerShown);
-        setResult(RESULT_OK, data);
-    } */
+        mQuestionTextView.setText(mQuestionBank[mCurrentIndex].getTextResID());
+        mOptionA.setText(mOptionABank[mCurrentIndex]);
+        mOptionB.setText(mOptionBBank[mCurrentIndex]);
+        mOptionC.setText(mOptionCBank[mCurrentIndex]);
+        mOptionD.setText(mOptionDBank[mCurrentIndex]);
+    }
+
+    private void checkAnswer(String userPressedTrue)
+    {
+        String answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
+
+        int messageResId = 0;
+
+        if(userPressedTrue.equals(answerIsTrue))
+        {
+            messageResId = R.string.correct_toast;
+        }
+
+        else
+        {
+            messageResId = R.string.incorrect_toast;
+        }
+
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
+    }
 }
