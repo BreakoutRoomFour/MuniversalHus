@@ -24,32 +24,20 @@
             android:layout_width="222dp"
             android:layout_height="300dp"
             android:layout_gravity="center"
-            android:src="@drawable/mutton" />
+            android:src="@drawable/whitemutton" />
 
-        <LinearLayout
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/upgrades"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/upgrade1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/upgrade1" />
-
-            <Button
-                android:id="@+id/upgrade2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/upgrade2" />
-
-        </LinearLayout>
+            android:text="@string/buttonUpgrade" />
 
         <Button
             android:id="@+id/questionnaire"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/questionnaire" />
 
     </LinearLayout>
