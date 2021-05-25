@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">MUniversal HU\'s</string>
-    <string name="upgrade1">Upgrade 1</string>
-    <string name="upgrade2">Upgrade 2</string>
+    <string name="buttonUpgrade">Upgrades</string>
+    <string name="upgrade1">Upgrade 1 \n 5 Mu\'s</string>
+    <string name="upgrade2">Upgrade 2 \n 10 Mu\'s</string>
     <string name="pointToast">Okay Mu!</string>
     <string name="easterEggToast">Okay Janth!</string>
     <string name="question_mu1">Who is Mu?</string>
