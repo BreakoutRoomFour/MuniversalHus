@@ -1,0 +1,69 @@
+
+package com.example.mugame;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import static com.example.mugame.MainActivity.keepingCount;
+
+public class Upgrades extends AppCompatActivity {
+
+    private int mCount;
+    private Button mUpgrade1;
+    private Button mUpgrade2;
+    private String mCurrentUpgrade;
+    public static final String keepingCurrentUpgrade = "com.example.mugame.keeping_Current_Upgrade";
+    public static final String changeKeepingCount = "com.example.mugame.change_Keeping_Count";
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_upgrades);
+
+        mCount = getIntent().getIntExtra(keepingCount,0);
+
+        TextView text = findViewById(R.id.mu_count);
+        text.setText("Mu Count: " + mCount + " Mu's");
+        Intent data = new Intent();
+        mUpgrade1 = findViewById(R.id.upgrade1);
+        mUpgrade1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mCount > 5){
+                    data.putExtra(keepingCurrentUpgrade, 2);
+                    data.putExtra(changeKeepingCount, mCount - 5);
+                    setResult(RESULT_OK,data);
+                    finish();
+                }
+                else{
+                    Toast.makeText(Upgrades.this, "Not Available!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        mUpgrade2 = findViewById(R.id.upgrade2);
+        mUpgrade2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (mCount > 10){
+                    data.putExtra(keepingCurrentUpgrade, 3);
+                    data.putExtra(changeKeepingCount, mCount - 10);
+                    setResult(RESULT_OK,data);
+                    finish();
+                }
+                else{
+                    Toast.makeText(Upgrades.this, "Not Available!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+}
